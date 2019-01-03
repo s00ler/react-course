@@ -1,0 +1,29 @@
+{
+  "name": "react-course",
+  "version": "1.0.0",
+  "description": "Repo for my coursera full-stack-react course",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s00ler/react-course.git"
+  },
+  "author": "Dmitry Gerasimov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s00ler/react-course/issues"
+  },
+  "homepage": "https://github.com/s00ler/react-course#readme",
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.6"
+  }
+}
