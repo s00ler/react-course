@@ -30,10 +30,14 @@ address {
 }
 
 body {
-    padding:50px 0px 0px 0px;
-    z-index:0;
+  padding: 50px 0px 0px 0px;
+  z-index: 0;
 }
 
 .navbar-dark {
-     background-color: #512DA8;
+  background-color: #512DA8;
+}
+
+.register-form {
+  padding-top: 25px;
 }
