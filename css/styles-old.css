@@ -43,14 +43,14 @@ body {
 }
 
 .tab-content {
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
 }
 
 .carousel {
-    background:#512DA8;
+  background: #512DA8;
 }
 
 .carousel-item {
@@ -58,8 +58,15 @@ body {
 }
 
 .carousel-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 300px;
+}
+
+#carouselButton {
+  right: 0px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 1;
 }
