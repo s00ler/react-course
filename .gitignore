@@ -63,5 +63,5 @@ typings/
 # Custom
 *.pdf
 .DS_Store
-downloaded/
+downloads/
 dist
