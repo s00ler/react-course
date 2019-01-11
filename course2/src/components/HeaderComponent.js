@@ -8,6 +8,7 @@ import {
     NavItem,
     Jumbotron
 } from 'reactstrap';
+
 import {NavLink} from 'react-router-dom';
 
 class Header extends Component {
@@ -28,37 +29,41 @@ class Header extends Component {
 
     render() {
         return (<div>
-            <Navbar dark expand="md">
+            <Navbar dark="dark" expand="md">
                 <div className="container">
                     <NavbarToggler onClick={this.toggleNav}/>
                     <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='Ristorante Con Fusion'/></NavbarBrand>
-                    <Collapse isOpen={this.state.isNavOpen} navbar>
-                        <Nav navbar>
+                    <Collapse isOpen={this.state.isNavOpen} navbar="navbar">
+                        <Nav navbar="navbar">
                             <NavItem>
                                 <NavLink className="nav-link" to='/home'>
-                                    <span className="fa fa-home fa-lg"> </span>
-                                    Home</NavLink>
+                                    <span className="fa fa-home fa-lg"></span>
+                                    <span> Home</span>
+                                </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/aboutus'>
-                                    <span className="fa fa-info fa-lg"> </span>
-                                    About Us</NavLink>
+                                    <span className="fa fa-info fa-lg"></span>
+                                    <span> About Us</span>
+                                </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/menu'>
-                                    <span className="fa fa-list fa-lg"> </span>
-                                    Menu</NavLink>
+                                    <span className="fa fa-list fa-lg"></span>
+                                    <span> Menu</span>
+                                </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/contactus'>
-                                    <span className="fa fa-address-card fa-lg"> </span>
-                                    Contact Us</NavLink>
+                                    <span className="fa fa-address-card fa-lg"></span>
+                                    <span> Contact Us</span>
+                                </NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
                 </div>
             </Navbar>
-            <Jumbotron>
+            <Jumbotron className="myjumbotron">
                 <div className="container">
                     <div className="row row-header">
                         <div className="col-12 col-sm-6">
