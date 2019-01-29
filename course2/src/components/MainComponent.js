@@ -37,11 +37,20 @@ class Main extends Component {
 
     render() {
         const HomePage = () => {
-            return (<Home dish={this.props.dishes.filter((dish) => dish.featured)[0]} promotion={this.props.promotions.filter((promo) => promo.featured)[0]} leader={this.props.leaders.filter((leader) => leader.featured)[0]}/>);
+            const dish = this.props.dishes.filter((dish) => dish.featured)[0]
+            const promotion = this.props.promotions.filter((promo) => promo.featured)[0]
+            const leader = this.props.leaders.filter((leader) => leader.featured)[0]
+
+            return (<Home dish={dish} promotion={promotion} leader={leader}/>);
         };
+
         const DishWithId = ({match}) => {
-            return (<DetailDish dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]} comments={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}/>);
+            const dish = this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]
+            const comments = this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))
+
+            return (<DetailDish dish={dish} comments={comments}/>);
         };
+
         return (<div>
             <Header/>
             <div>
@@ -50,7 +59,7 @@ class Main extends Component {
                     <Route exact="exact" path='/aboutus' component={() => <About leaders={this.props.leaders}/>}/>} />
                     <Route exact="exact" path='/menu' component={() => <Menu dishes={this.props.dishes}/>}/>
                     <Route path='/menu/:dishId' component={DishWithId}/>
-                    <Route exact="exact" path='/contactus' component={Contact}/>} />
+                    <Route exact="exact" path='/contactus' component={Contact}/>}/>
                     <Redirect to="/home"/>
                 </Switch>
             </div>

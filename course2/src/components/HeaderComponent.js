@@ -31,7 +31,7 @@ class Header extends Component {
         this.toggleModal = this.toggleModal.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
     }
-    
+
     handleLogin(event) {
         this.toggleModal();
         alert("Username: " + this.username.value + " Password: " + this.password.value + " Remember: " + this.remember.checked);
@@ -62,35 +62,32 @@ class Header extends Component {
                             <NavItem>
                                 <NavLink className="nav-link" to='/home'>
                                     <span className="fa fa-home fa-lg"></span>
-                                    <span>
-                                        Home</span>
+                                    <span>&nbsp;Home</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/aboutus'>
                                     <span className="fa fa-info fa-lg"></span>
-                                    <span>
-                                        About Us</span>
+                                    <span>&nbsp;About Us</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/menu'>
                                     <span className="fa fa-list fa-lg"></span>
-                                    <span>
-                                        Menu</span>
+                                    <span>&nbsp;Menu</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/contactus'>
                                     <span className="fa fa-address-card fa-lg"></span>
-                                    <span>
-                                        Contact Us</span>
+                                    <span>&nbsp;Contact Us</span>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <Button outline="outline" onClick={this.toggleModal}>
                                     <span className="fa fa-sign-in fa-lg"></span>
-                                    Login</Button>
+                                    <span>&nbsp;Login</span>
+                                </Button>
                             </NavItem>
                         </Nav>
                     </Collapse>
