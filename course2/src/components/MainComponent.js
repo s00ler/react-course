@@ -15,14 +15,17 @@ import {COMMENTS} from '../shared/comments';
 import {PROMOTIONS} from '../shared/promotions';
 import {LEADERS} from '../shared/leaders';
 
-import {addComment} from '../redux/ActionCreators';
+import {addComment, fetchDishes} from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {dishes: state.dishes, comments: state.comments, promotions: state.promotions, leaders: state.leaders}
 }
 
 const mapDispatchToProps = dispatch => ({
-    addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+    addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+    fetchDishes: () => {
+        dispatch(fetchDishes())
+    }
 });
 
 class Main extends Component {
@@ -37,24 +40,30 @@ class Main extends Component {
         };
     }
 
+    componentDidMount() {
+        this.props.fetchDishes();
+    }
+
     onDishSelect(dishId) {
         this.setState({selectedDish: dishId});
     }
 
     render() {
         const HomePage = () => {
-            const dish = this.props.dishes.filter((dish) => dish.featured)[0]
+            const dish = this.props.dishes.dishes.filter((dish) => dish.featured)[0]
+            const dishesLoading = this.props.dishes.isLoading
+            const dishesErrMess = this.props.dishes.errMess
             const promotion = this.props.promotions.filter((promo) => promo.featured)[0]
             const leader = this.props.leaders.filter((leader) => leader.featured)[0]
 
-            return (<Home dish={dish} promotion={promotion} leader={leader}/>);
+            return (<Home dish={dish} promotion={promotion} leader={leader} dishesLoading={dishesLoading} dishesErrMess={dishesErrMess}/>);
         };
 
         const DishWithId = ({match}) => {
-            const dish = this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]
+            const dish = this.props.dishes.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]
             const comments = this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))
 
-            return (<DetailDish dish={dish} comments={comments} addComment={this.props.addComment}/>);
+            return (<DetailDish dish={dish} comments={comments} addComment={this.props.addComment} isLoading={this.props.dishes.isLoading} errMess={this.props.dishes.errMess}/>);
         };
 
         return (<div>
