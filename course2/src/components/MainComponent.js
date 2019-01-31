@@ -68,7 +68,7 @@ class Main extends Component {
             const leader = this.props.leaders.leaders.filter((leader) => leader.featured)[0]
             const leaderLoading = this.props.leaders.isLoading
             const leaderErrMess = this.props.leaders.errMess
-            console.log(this.props.leaders);
+
             return (<Home
                 dish={dish}
                 dishesLoading={dishesLoading}
