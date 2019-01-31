@@ -8,11 +8,13 @@ import {
     Media
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {Loading} from './LoadingComponent';
+import {baseUrl} from '../shared/baseUrl';
 
 function RenderLeader({leader}) {
     return (<Media tag="li" key={leader.id} className="col-12 mt-5">
         <Media left="left" middle="middle">
-            <Media object="object" src={leader.image} alt={leader.name}/>
+            <Media object="object" src={baseUrl + leader.image} alt={leader.name}/>
         </Media>
         <Media body="body" className="ml-5 text-left">
             <Media heading="heading">{leader.name}</Media>
@@ -22,12 +24,34 @@ function RenderLeader({leader}) {
     </Media>);
 }
 
-function About(props) {
-
-    const leaders = props.leaders.map((leader) => {
+function RenderLeaders({props}) {
+    const leaders = props.leaders.leaders.map((leader) => {
         return (<RenderLeader leader={leader}/>);
     });
 
+    if (props.leaders.isLoading) {
+        return (<div className="container">
+            <div className="row">
+                <Loading/>
+            </div>
+        </div>);
+    } else if (props.leaders.errMess) {
+        return (<div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <h4>{props.leaders.errMess}</h4>
+                </div>
+            </div>
+        </div>);
+    } else
+        return <div className="col-12">
+            <Media list="list">
+                {leaders}
+            </Media>
+        </div>
+}
+
+function About(props) {
     return (<div className="container">
 
         <div className="row">
@@ -91,12 +115,7 @@ function About(props) {
                 <h2>Corporate Leadership</h2>
             </div>
 
-            <div className="col-12">
-                <Media list="list">
-                    {leaders}
-                </Media>
-            </div>
-
+            <RenderLeaders props={props}/>
         </div>
 
     </div>);
