@@ -114,3 +114,38 @@ export const fetchLeaders = () => (dispatch) => {
 };
 export const leadersLoading = () => ({type: ActionTypes.LEADERS_LOADING});
 export const leadersFailed = (errmess) => ({type: ActionTypes.LEADERS_FAILED, payload: errmess});
+
+export const postFeedback = (feedback) => (dispatch) => {
+    const newFeedback = {
+        date: new Date().toISOString(),
+        ...feedback
+    }
+
+    return fetch(baseUrl + 'feedback', {
+        method: 'POST',
+        body: JSON.stringify(newFeedback),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin'
+    }).then(response => {
+        if (response.ok) {
+
+            return response;
+        } else {
+            let error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+
+            throw error;
+        }
+    }, error => {
+        let errorMessage = new Error(error.errorMessage);
+        throw errorMessage;
+    }).then(response => response.json()).then(response => {
+        dispatch(addComment(response))
+        alert('Thank for yor feedback!\n' + JSON.stringify(response));
+    }).catch(error => {
+        console.log('Post feedback: ' + error.message);
+        alert('Feedback could not be posted:\n' + error.message)
+    })
+};

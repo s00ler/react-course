@@ -17,6 +17,7 @@ import {required, maxLength, minLength, isNumber, validEmail} from '../utils/uti
 class Contact extends Component {
 
     handleSubmit(value) {
+        this.props.postFeedback(value);
         this.props.resetFeedbackForm();
     }
 

@@ -8,20 +8,23 @@ import {
     Media
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {Stagger, Fade} from 'react-animation-components';
 import {Loading} from './LoadingComponent';
 import {baseUrl} from '../shared/baseUrl';
 
 function RenderLeader({leader}) {
-    return (<Media tag="li" key={leader.id} className="col-12 mt-5">
-        <Media left="left" middle="middle">
-            <Media object="object" src={baseUrl + leader.image} alt={leader.name}/>
+    return (<Fade in="in">
+        <Media tag="li" key={leader.id} className="col-12 mt-5">
+            <Media left="left" middle="middle">
+                <Media object="object" src={baseUrl + leader.image} alt={leader.name}/>
+            </Media>
+            <Media body="body" className="ml-5 text-left">
+                <Media heading="heading">{leader.name}</Media>
+                <p>{leader.designation}</p>
+                <p>{leader.description}</p>
+            </Media>
         </Media>
-        <Media body="body" className="ml-5 text-left">
-            <Media heading="heading">{leader.name}</Media>
-            <p>{leader.designation}</p>
-            <p>{leader.description}</p>
-        </Media>
-    </Media>);
+    </Fade>);
 }
 
 function RenderLeaders({props}) {
@@ -46,7 +49,9 @@ function RenderLeaders({props}) {
     } else
         return <div className="col-12">
             <Media list="list">
-                {leaders}
+                <Stagger in="in">
+                    {leaders}
+                </Stagger>
             </Media>
         </div>
 }
